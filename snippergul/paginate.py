@@ -60,6 +60,20 @@ class Paginate(object):
     def wind_right(self):
         return self.end - self.current if self.end < self.num_pages else None
 
+    def serialize(self):
+        return {"num_pages": self.num_pages,
+                "window": self.window,
+                "start": self.start,
+                "end": self.end,
+                "pages": self.pages,
+                "next": self.next(),
+                "prev": self.prev(),
+                "last": self.last(),
+                "dots_left": self.dots_left(),
+                "dots_right": self.dots_right(),
+                "wind_left": self.wind_left(),
+                "wind_right": self.wind_right()}
+
 
 def pager(queryset, request, onpage=10, window=3, page_get_param='page'):
     if isinstance(request, HttpRequest):
