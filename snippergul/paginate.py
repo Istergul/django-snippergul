@@ -55,7 +55,7 @@ class Paginate(object):
         return post_end if self.end < self.num_pages and post_end < self.num_pages else None
 
     def wind_left(self):
-        return start-2 if self.start > 1 else None
+        return self.start-2 if self.start > 1 else None
 
     def wind_right(self):
         return self.end - self.current if self.end < self.num_pages else None
